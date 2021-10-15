@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>New Employee</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+	<body>
+		<div th:insert="fragments/navbar.html"></div>
+		<h3>Register New Employee</h3>
+		<form action="/employees" method="post">
+			<table class="table">
+				<tr>
+					<td>Employee Name</td>
+					<td><input type="text" name="employeeName" required></td>
+				</tr>
+				<tr>
+					<td>Employee Code</td>
+					<td><input type="text" name="employeeCode" required></td>
+				</tr>
+				<tr>
+					<td>Department</td>
+					<td>
+						<select name="department" required>
+							<option th:each="dep: ${departments}" th:value="${dep.id}" th:text="${dep.name}"></option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Payroll</td>
+					<td>
+						<input type="radio" name="payroll" required value=true id="payrollYes"> Yes &nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="radio" name="payroll" required value=false id="payrollNo"> No
+					</td>
+				</tr>
+				<tr>
+					<td>Date of Joining</td>
+					<td><input type="date" name="dateOfJoining" required></td>
+				</tr>
+				
+				<tr>
+					<td>Termination Date</td>
+					<td><input type="date" name="employmentTerminationDate"></td>
+				</tr>
+				<tr>
+					<td>Basic Salary (In Rs.)</td>
+					<td><input type="number" name="basicSalary" min="0" required></td>
+				</tr>
+				<tr>
+					<td>Allowances (In Rs.)</td>
+					<td><input type="number" name="allowances" min="0" required></td>
+				</tr>
+				<tr>
+					<td>Deductions (In Rs.)</td>
+					<td><input type="number" name="deductions" min="0" required></td>
+				</tr>
+				<tr>
+					<td colspan="2"><button type="submit">Add Employee</button></td>
+				</tr>
+			</table>
+		</form>
+		
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+</html>
