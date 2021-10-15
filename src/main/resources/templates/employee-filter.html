@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Search Employee</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+	<body>
+		<div th:insert="fragments/navbar.html"></div>
+		<br/>
+		<form action="/employees/filter" method="post">
+			Min Basic Salary <input type="text" name="minSalary" required> &nbsp;&nbsp;&nbsp;
+			Max Basic Salary <input type="text" name="maxSalary" required> &nbsp;&nbsp;&nbsp;
+			<button type="submit">Search Employee</button>
+		</form>
+		<br/>
+		<table class="table table-striped">
+		    <thead class="thead-dark">
+			    <tr>
+			        <th scope="col">Id</th>
+			        <th scope="col">Name</th>
+			        <th scope="col">Department</th>
+			        <th scope="col">Basic Salary</th>
+			    </tr>
+		    </thead>
+		    <tbody>
+		
+			    <tr th:each="employee : ${employees}">
+			        <td th:text="${employee.id}"></td>
+			        <td th:text="${employee.name}"></td>
+			        <td th:text="${employee.department.name}"></td>
+			        <td th:text="${employee.basicSalary}"></td>
+			    </tr>
+		    </tbody>
+		</table>
+		
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	</body>
+</html>
